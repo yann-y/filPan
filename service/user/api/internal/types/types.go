@@ -8,12 +8,10 @@ type LoginReq struct {
 }
 
 type LoginReply struct {
-	Id           int64  `json:"id"`
-	Name         string `json:"name"`
-	Gender       string `json:"gender"`
-	AccessToken  string `json:"accessToken"`
-	AccessExpire int64  `json:"accessExpire"`
-	RefreshAfter int64  `json:"refreshAfter"`
+	Id          int64  `json:"id"`
+	Name        string `json:"name"`
+	Email       string `json:"email"`
+	AccessToken string `json:"accessToken"`
 }
 
 type RegisterReq struct {
