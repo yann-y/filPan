@@ -1,0 +1,42 @@
+// syntaxLit doc
+syntax = "v1" // syntaxLit commnet
+
+type (
+	LoginReq {
+		Email    string `json:"email"`
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+
+	LoginReply {
+		Id           int64  `json:"id"`
+		Name         string `json:"name"`
+		Gender       string `json:"gender"`
+		AccessToken  string `json:"accessToken"`
+		AccessExpire int64  `json:"accessExpire"`
+		RefreshAfter int64  `json:"refreshAfter"`
+	}
+	registerReq {
+		Email    string `json:"email"`
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+	chagePasswdReq {
+		Email     string `json:"email"`
+		Username  string `json:"username"`
+		OldPasswd string `json:"oldPasswd"`
+		NewPasswd string `json:"newPasswd"`
+	}
+)
+//@server(
+//    jwt: Auth
+//    group: foo
+//    middleware: AuthMiddleware
+//prefix /api
+//)
+service user-api {
+	@handler login
+	post /user/login (LoginReq) returns (LoginReply)
+	@handler register
+	post /user/register (registerReq) returns (LoginReply)
+}
