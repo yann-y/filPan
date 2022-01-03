@@ -5,18 +5,27 @@ package user
 
 import (
 	"context"
+	user "ipfsdisk/service/user/rpc/pb"
+
 	"github.com/tal-tech/go-zero/zrpc"
 	"google.golang.org/grpc"
-	"ipfsdisk/service/user/rpc/pb"
 )
 
 type (
-	IdRequest     = pb.IdRequest
-	LoginReq      = pb.LoginReq
-	LoginResponse = pb.UserLoginResponse
+	ChangePasswdReq   = user.ChangePasswdReq
+	IdRequest         = user.IdRequest
+	LoginReq          = user.LoginReq
+	MsgResponse       = user.MsgResponse
+	ResisterReq       = user.ResisterReq
+	UserLoginResponse = user.UserLoginResponse
 
 	User interface {
-		UserLogin(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*LoginResponse, error)
+		//  用户登录
+		UserLogin(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*UserLoginResponse, error)
+		//  用户注册
+		UserResister(ctx context.Context, in *ResisterReq, opts ...grpc.CallOption) (*UserLoginResponse, error)
+		//  修改密码
+		UserChangePasswd(ctx context.Context, in *ChangePasswdReq, opts ...grpc.CallOption) (*MsgResponse, error)
 	}
 
 	defaultUser struct {
@@ -30,7 +39,20 @@ func NewUser(cli zrpc.Client) User {
 	}
 }
 
-func (m *defaultUser) UserLogin(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*LoginResponse, error) {
-	client := pb.NewUserClient(m.cli.Conn())
+//  用户登录
+func (m *defaultUser) UserLogin(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*UserLoginResponse, error) {
+	client := user.NewUserClient(m.cli.Conn())
 	return client.UserLogin(ctx, in, opts...)
+}
+
+//  用户注册
+func (m *defaultUser) UserResister(ctx context.Context, in *ResisterReq, opts ...grpc.CallOption) (*UserLoginResponse, error) {
+	client := user.NewUserClient(m.cli.Conn())
+	return client.UserResister(ctx, in, opts...)
+}
+
+//  修改密码
+func (m *defaultUser) UserChangePasswd(ctx context.Context, in *ChangePasswdReq, opts ...grpc.CallOption) (*MsgResponse, error) {
+	client := user.NewUserClient(m.cli.Conn())
+	return client.UserChangePasswd(ctx, in, opts...)
 }

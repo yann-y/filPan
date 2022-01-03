@@ -21,7 +21,20 @@ func NewUserServer(svcCtx *svc.ServiceContext) *UserServer {
 	}
 }
 
-func (s *UserServer) UserLogin(ctx context.Context, in *user.LoginReq) (*user.LoginResponse, error) {
+//  用户登录
+func (s *UserServer) UserLogin(ctx context.Context, in *user.LoginReq) (*user.UserLoginResponse, error) {
 	l := logic.NewUserLoginLogic(ctx, s.svcCtx)
 	return l.UserLogin(in)
+}
+
+//  用户注册
+func (s *UserServer) UserResister(ctx context.Context, in *user.ResisterReq) (*user.UserLoginResponse, error) {
+	l := logic.NewUserResisterLogic(ctx, s.svcCtx)
+	return l.UserResister(in)
+}
+
+//  修改密码
+func (s *UserServer) UserChangePasswd(ctx context.Context, in *user.ChangePasswdReq) (*user.MsgResponse, error) {
+	l := logic.NewUserChangePasswdLogic(ctx, s.svcCtx)
+	return l.UserChangePasswd(in)
 }

@@ -8,19 +8,44 @@ option go_package = "./user";
 message IdRequest {
   string id = 1;
 }
+// 用户注册账户输入
+message ResisterReq{
+  string  Email = 1;
+  string  Username = 2;
+  string  Password = 3;
+  string  code = 4; // 验证码，邮箱验证码
+}
+// 用户登录输入
 message LoginReq {
   string  Email = 1;
   string  Username = 2;
   string  Password = 3;
 }
 // 登录返回
-message    UserLoginResponse {
+message UserLoginResponse {
   int64  Id = 1; // 用户ID
   string Name = 2; // 用户名称
   string Emile = 3; // 用户邮箱
   string AccessToken = 4; // 用户token
 }
-
+// 修改密码
+message ChangePasswdReq{
+  int64 Id = 1;
+  string oldPasswd = 2;
+  string newPasswd = 3;
+}
+// 消息返回统一格式体
+message MsgResponse{
+  int32 code = 1;
+  bool success = 2;
+  string msg = 3;
+  string data = 4;
+}
 service User {
-  rpc userLogin (LoginReq) returns(UserLoginResponse);
+  // 用户登录
+  rpc userLogin(LoginReq) returns(UserLoginResponse);
+  // 用户注册
+  rpc userResister(ResisterReq) returns(UserLoginResponse);
+  // 修改密码
+  rpc userChangePasswd(ChangePasswdReq) returns(MsgResponse);
 }
