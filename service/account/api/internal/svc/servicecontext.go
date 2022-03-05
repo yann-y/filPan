@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"github.com/tal-tech/go-zero/zrpc"
+	"github.com/zeromicro/go-zero/zrpc"
 	"ipfsdisk/service/account/api/internal/config"
 	"ipfsdisk/service/account/rpc/pb"
 	"ipfsdisk/service/account/rpc/user"
