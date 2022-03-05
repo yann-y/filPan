@@ -9,8 +9,8 @@ import (
 	"ipfsdisk/service/account/api/internal/handler"
 	"ipfsdisk/service/account/api/internal/svc"
 
-	"github.com/tal-tech/go-zero/core/conf"
-	"github.com/tal-tech/go-zero/rest"
+	"github.com/zeromicro/go-zero/core/conf"
+	"github.com/zeromicro/go-zero/rest"
 )
 
 //var configFile = flag.String("f", "etc/pb-api.yaml", "the config file")

@@ -3,7 +3,7 @@ package handler
 import (
 	"net/http"
 
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 	"ipfsdisk/service/account/api/internal/logic"
 	"ipfsdisk/service/account/api/internal/svc"
 	"ipfsdisk/service/account/api/internal/types"

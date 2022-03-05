@@ -8,7 +8,7 @@ import (
 	"ipfsdisk/service/account/rpc/internal/svc"
 	"ipfsdisk/service/account/rpc/user"
 
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type UserResisterLogic struct {

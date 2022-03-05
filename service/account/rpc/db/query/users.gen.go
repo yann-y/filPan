@@ -11,7 +11,7 @@ import (
 	"gorm.io/gorm/clause"
 	"gorm.io/gorm/schema"
 
-	"github.com/tal-tech/go-zero/tools/goctl/model/sql/test/model"
+	"github.com/zeromicro/go-zero/tools/goctl/model/sql/test/model"
 	"gorm.io/gen"
 	"gorm.io/gen/field"
 )

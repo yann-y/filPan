@@ -5,7 +5,7 @@ package logic
 
 import (
 	"context"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 	es "ipfsdisk/pkg/erros"
 	"ipfsdisk/pkg/jwt"
 	"strings"

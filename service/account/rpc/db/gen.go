@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/tal-tech/go-zero/tools/goctl/model/sql/test/model"
+	"github.com/zeromicro/go-zero/tools/goctl/model/sql/test/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gen"
 	"gorm.io/gorm"
